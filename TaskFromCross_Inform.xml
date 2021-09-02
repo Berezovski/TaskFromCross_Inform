@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskFromCross_Inform</name>
+    </assembly>
+    <members>
+        <member name="M:TaskFromCross_Inform.Program.PrintArray(System.String[])">
+            <summary>
+            Вывод массива через запятую
+            </summary>
+            <param name="array"> Массив </param>
+        </member>
+        <member name="T:TaskFromCross_Inform.WorkWithFile">
+            <summary>
+            Класс для работы с файлом
+            </summary>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithFile.GetStringOfAllLinesFromFile(System.String)">
+            <summary>
+            Взять все данные из файла в виде строки
+            </summary>
+            <param name="filePath"> Путь к файлу </param>
+            <returns> Строка всех символов считанных из файла </returns>
+        </member>
+        <member name="T:TaskFromCross_Inform.WorkWithText">
+            <summary>
+            Работа с текстом по ТЗ
+            </summary>
+        </member>
+        <member name="P:TaskFromCross_Inform.WorkWithText.WorkTime">
+            <summary>
+            Свойство, отвечающее за время последнего выполнения функции поиска и взятия 10 триплетов
+            </summary>
+        </member>
+        <member name="F:TaskFromCross_Inform.WorkWithText._dictionaryOfTriplets">
+            <summary>
+            Dictionary для многопоточного безопасного использования
+            </summary>
+        </member>
+        <member name="F:TaskFromCross_Inform.WorkWithText._separators">
+            <summary>
+            Разделители, которые учитываются при работе с файлом
+            </summary>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.#ctor">
+            <summary>
+            Инициализация словаря и счётчика
+            </summary>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.ClearWorkTime">
+            <summary>
+            Очистить счётчик
+            </summary>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.GetTopTenTriplets(System.String)">
+            <summary>
+            Взятие десяти часто встречающихся триплетов из строки
+            </summary>
+            <param name="userString"> текст </param>
+            <returns> 10 триплетов (по умолчанию элементы: "-Nothing-") </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.SetConcurrentDictionaryOfTripletsFromWords(System.String[])">
+            <summary>
+            Считывание триплетов и указывание количество одинаковых в коллекцию _dictionaryOfTriplets
+            </summary>
+            <param name="words"> Массов слов </param>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.GetTenTopTripletsFromWords(System.String[])">
+            <summary>
+            Взятие топ 10 триплетов из слов (не многопоточное)
+            </summary>
+            <param name="words"> Массив слов </param>
+            <returns> Топ 10 триплетов </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.GetTenTopTripletsFromWordsAsync(System.String[],System.Int32)">
+            <summary>
+            Взятие топ 10 триплетов из слов (многопоточное), с учётом количества процессоров
+            </summary>
+            <param name="words"> Массив слов </param>
+            <param name="processorCount"> Количество процессоров </param>
+            <returns> Топ 10 триплетов </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.DividedWordsIntoGroups(System.String[],System.Int32)">
+            <summary>
+            Разделение слов на группы для многопоточной работы (1 группа -> 1 поток)
+            </summary>
+            <param name="words"> Массив слов </param>
+            <param name="groupCount"> Количество групп </param>
+            <returns> Группы массивов слов </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.SplitStringIntoWords(System.String)">
+            <summary>
+            Разделение строки на слова (учитывая сепараторы)
+            </summary>
+            <param name="str"> Строка </param>
+            <returns> Слова </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.GetOrderedDictionaryFromConcurrentDictionaryByValue">
+            <summary>
+            Сортируем _dictionaryOfTriplets по значениям (по убыванию)
+            </summary>
+            <returns> Отсортированный Dictionary </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.GetTopTenTripletsFromDictionary(System.Collections.Generic.Dictionary{System.String,System.Int32})">
+            <summary>
+            Взятие топ 10 триплетов из Dictionary
+            </summary>
+            <param name="dictionaryOfTriplets"></param>
+            <returns> Топ 10 триплетов из Dictionary </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.GetTripletsFromOneWord(System.String)">
+            <summary>
+            Взятие триплетов из 1 слова
+            </summary>
+            <param name="word"> Слово </param>
+            <returns> Триплеты </returns>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.ClearConcurrentDictionary">
+            <summary>
+            Очистка _dictionaryOfTriplets
+            </summary>
+        </member>
+        <member name="M:TaskFromCross_Inform.WorkWithText.SortTenFirstPairWithSameValueInDictionary(System.Collections.Generic.Dictionary{System.String,System.Int32})">
+            <summary>
+            Сортирует ключи с одинаковыми значениями (для исправления хаотичности
+            порядка ключей с одинаковыми значениями при многопоточном добавлении) 
+            </summary>
+            <param name="sortedDictionaryOfTripletsByValue"> Отсортированный по значениям Dictionary</param>
+            <returns> Полностью отсортированный Dictionary </returns>
+        </member>
+    </members>
+</doc>

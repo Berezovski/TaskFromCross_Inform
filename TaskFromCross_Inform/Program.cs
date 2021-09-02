@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace TaskFromCross_Inform
 {
@@ -8,33 +9,45 @@ namespace TaskFromCross_Inform
         {
             if (args.Length == 0)
             {
-                throw new ArgumentNullException("Specify the path to the file in the arguments");
+                Console.WriteLine("Командная строка пуста, введите туда путь к файлу");
             }
 
+            Console.WriteLine(@"Используемые разделительные символы: ' ', '\r', '\n', '\0', '\t'");
+            Console.WriteLine("Полный путь к файлу: " + args[0]);
+
+            string allText = "";
+
+            try
+            {
+                allText = WorkWithFile.GetStringOfAllLinesFromFile(args[0]);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Не смог найти файл по полному пути: " + args[0]);
+                Console.WriteLine(ex);
+            }
             WorkWithText texWork = new WorkWithText();
 
-            PrintArray(texWork.GetTopTenTriplets(WorkWithFile.GetAllLinesFromFile(args[0])));
+            PrintArray(texWork.GetTopTenTriplets(allText));
             Console.WriteLine(texWork.WorkTime.Elapsed.ToString());
-             texWork = new WorkWithText();
 
-            PrintArray(texWork.GetTopTenTriplets(WorkWithFile.GetAllLinesFromFile(args[0])));
-            Console.WriteLine(texWork.WorkTime.Elapsed.ToString());
-             texWork = new WorkWithText();
 
-            PrintArray(texWork.GetTopTenTriplets(WorkWithFile.GetAllLinesFromFile(args[0])));
-            Console.WriteLine(texWork.WorkTime.Elapsed.ToString());
         }
 
-        static void PrintArray(string[] str)
+        /// <summary>
+        /// Вывод массива через запятую
+        /// </summary>
+        /// <param name="array"> Массив </param>
+        static void PrintArray(string[] array)
         {
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (i == str.Length-1)
+                if (i == array.Length-1)
                 {
-                    Console.Write(str[i]);
+                    Console.Write(array[i]);
                     break;
                 }
-                Console.Write(str[i]);
+                Console.Write(array[i]);
                 Console.Write(", ");
             }
             Console.WriteLine();
