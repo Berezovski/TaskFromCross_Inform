@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TaskFromCross_Inform": {
+      "commandName": "Project",
+      "commandLineArgs": "d:\\visualstudio_projects\\taskfromcross_inform\\TaskFromCross_Inform\\Text.txt"
+    }
+  }
+}
