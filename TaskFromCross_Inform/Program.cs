@@ -15,17 +15,8 @@ namespace TaskFromCross_Inform
             Console.WriteLine(@"Используемые разделительные символы: ' ', '\r', '\n', '\0', '\t'");
             Console.WriteLine("Полный путь к файлу: " + args[0]);
 
-            string allText = "";
+            string allText = WorkWithFile.GetStringOfAllLinesFromFile(args[0]);
 
-            try
-            {
-                allText = WorkWithFile.GetStringOfAllLinesFromFile(args[0]);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine("Не смог найти файл по полному пути: " + args[0]);
-                Console.WriteLine(ex);
-            }
             WorkWithText texWork = new WorkWithText();
 
             PrintArray(texWork.GetTopTenTriplets(allText));
